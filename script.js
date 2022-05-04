@@ -76,13 +76,14 @@ var specialChara = [
   "+",
   "/",
 ];
-var numberChara = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+var numberChara = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
 
-// empty arrays
+// empty arrays to be filled
 var possibleChara = [];
 var generatedChara = [];
 
 // prompt user input and store info
+//TODO need to limit password length (if-else the heck out of passwordInfo.length)(8-128)
 var passwordInfo = {
   length: window.prompt(
     "How many characters would you like your password to be?"
@@ -99,34 +100,47 @@ var passwordInfo = {
   number: window.confirm("Would you like your password to contain numbers?"),
 };
 
-//put possible characters into possible characters array. no elses are needed
-if (passwordInfo.uppercase = true) {
-  //add uppercaseChara to possibleChara
+//put possible characters into possible characters array
+var generatePossibleChara = function () {
+  if (passwordInfo.uppercase === true) {
+    //add uppercaseChara to possibleChara
+    possibleChara = possibleChara.concat(uppercaseChara);
+  }
+  if (passwordInfo.lowercase === true) {
+    //add lowercaseChara to possibleChara
+    possibleChara = possibleChara.concat(lowercaseChara);
+  }
+  if (passwordInfo.special === true) {
+    //add specialChara to possibleChara
+    possibleChara = possibleChara.concat(specialChara);
+  }
+  if (passwordInfo.number === true) {
+    //add numberChara to possibleChara
+    possibleChara = possibleChara.concat(numberChara);
+  }
+  return possibleChara;
 };
+generatePossibleChara();
 
-if (passwordInfo.lowercase = true) {
-  //add lowercaseChara to possibleChara
-};
-
-if (passwordInfo.special = true) {
-  //add specialChara to possibleChara
-};
-
-if (passwordInfo.number = true) {
-  //add numberChara to possibleChara
-};
-
-//generate a character from the possible chara array the number of times needed to reach the inputted # of chara (8-128)
-var randomChara = function() {
+//generate a character from possibleChara, loop to get the user-inputted password length
+var generateRandomChara = function () {
   for (var i = 0; i < passwordInfo.length; i++) {
-    //randomly pull from possibleChara
-    Math.floor(Math.random * possibleChara.length);
+    //pull a randomChara from possibleChara
+    var randomChara =
+      possibleChara[Math.floor(Math.random() * possibleChara.length)];
     //store in generatedChara
+    generatedChara = generatedChara.concat(randomChara);
   }
 };
+generateRandomChara();
 
 //join separate charas into one string
-join(generatedChara);
+var joinedChara = generatedChara.join("");
+console.log(joinedChara);
+
+var generatePassword = function () {
+  //wrap all above code in this function
+};
 
 //TODO: wrap this whole thing in a function called generatePassword
 
