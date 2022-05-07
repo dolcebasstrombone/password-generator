@@ -18,11 +18,8 @@ This website can generate secure passwords based on user inputs. Clicking the bu
 
 [Live Page](https://dolcebasstrombone.github.io/password-generator/)
 
+## Application Screenshot
+
+![Screenshot of the working application](./assets/images/application.PNG)
+
 ## Grading Requirements
-
-Application loads with no errors.
-Application GitHub URL submitted.
-GitHub repository that contains application code.
-
-Repository follows best practices for file structure and naming conventions.
-Repository contains quality README file with description, screenshot, and link to deployed application.
