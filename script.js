@@ -86,12 +86,18 @@ var generatedChara = [];
 var generatePassword = function () {
   // get password length, called in the passwordInfo object
   var getPasswordLength = function () {
-    var passwordLength = window.prompt("How many characters would you like your password to be?");
-    if (passwordLength === '' || passwordLength === null) {
-      passwordLength = window.prompt("How many characters would you like your password to be?");
+    var passwordLength = window.prompt(
+      "How many characters would you like your password to be?"
+    );
+    if (passwordLength === "" || passwordLength === null) {
+      passwordLength = window.prompt(
+        "How many characters would you like your password to be?"
+      );
     } else if (passwordLength < 8 || passwordLength > 128) {
       alert("Please enter a number between 8 and 128.");
-      passwordLength = window.prompt("How many characters would you like your password to be?");
+      passwordLength = window.prompt(
+        "How many characters would you like your password to be?"
+      );
     }
     return passwordLength;
   };
@@ -109,11 +115,20 @@ var generatePassword = function () {
     ),
     number: window.confirm("Would you like your password to contain numbers?"),
   };
+  if (
+    passwordInfo.lowercase === false &&
+    passwordInfo.uppercase === false &&
+    passwordInfo.special === false &&
+    passwordInfo.number === false
+  ) {
+    alert("You need to include at least one type of character.");
+    generatePassword();
+  };
   //put possible characters into possible characters array
   var generatePossibleChara = function () {
     if (passwordInfo.uppercase === true) {
       //add uppercaseChara to possibleChara
-      possibleChara = possibleChara.concat(uppercaseChara);
+      possibleChara = possibleChara.concat(uppercaseChara)
     }
     if (passwordInfo.lowercase === true) {
       //add lowercaseChara to possibleChara
